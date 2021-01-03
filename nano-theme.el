@@ -478,7 +478,7 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face 'org-mode-line-clock-overrun             'nano-face-faded)
     (set-face 'org-priority                            'nano-face-faded)
     (set-face 'org-property-value                      'nano-face-faded)
-    (set-face 'org-quote                               'nano-face-faded)
+    (set-face 'org-quote                               'nano-face-salient)
     (set-face 'org-scheduled                           'nano-face-faded)
     (set-face 'org-scheduled-previously                'nano-face-faded)
     (set-face 'org-scheduled-today                     'nano-face-faded)
