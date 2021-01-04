@@ -704,15 +704,20 @@ function is a convenience wrapper used by `describe-package-1'."
   (with-eval-after-load 'company
     (set-face 'company-tooltip                         'nano-face-strong)
     (set-face 'company-tooltip-selection               'nano-face-salient)
+    (set-face 'company-tooltip-mouse                   'nano-face-strong)
     (set-face 'company-tooltip-common                  'nano-face-strong)
     (set-face 'company-tooltip-common-selection        'nano-face-salient)
     (set-face 'company-preview                         'nano-face-faded)
     (set-face 'company-preview-common                  'nano-face-faded)
+    (set-face 'company-preview-search                  'nano-face-strong)
     (set-face 'company-tooltip-search                  'nano-face-faded)
     (set-face 'company-tooltip-search-selection        'nano-face-strong)
     (set-face 'company-scrollbar-bg                    'nano-face-default)
-    (set-face 'company-scrollbar-fg                    'nano-face-subtle))
-  )
+    (set-face 'company-scrollbar-fg                    'nano-face-subtle)
+    ;; (set-face 'company-template-field                  'nano-face-subtle)
+    (set-face 'company-tooltip-annotation              'nano-face-strong)
+    (set-face 'company-echo-common                     'nano-face-strong)
+    (set-face 'company-tooltip-annotation-selection    'nano-face-popout)))
 
 
 (defun nano-theme ()
@@ -751,4 +756,4 @@ function is a convenience wrapper used by `describe-package-1'."
   (nano-theme--hl-line)
   (nano-theme--company))
 
-(provide 'nano-theme)
+  (provide 'nano-theme)
