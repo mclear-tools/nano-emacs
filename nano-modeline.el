@@ -483,8 +483,8 @@
 (add-hook 'window-configuration-change-hook 'nano-modeline-update-windows)
 
 (setq eshell-status-in-modeline nil)
-;; (setq-default mode-line-format (list "%-"))
-(setq-default mode-line-format "")
+(setq-default mode-line-format (list "%-"))
+;; (setq-default mode-line-format "")
 (nano-modeline)
 
 (provide 'nano-modeline)
