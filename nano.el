@@ -15,14 +15,6 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program. If not, see <http://www.gnu.org/licenses/>.
 ;; ---------------------------------------------------------------------
-(package-initialize)
-
-;; Path to nano emacs modules (mandatory)
-(add-to-list 'load-path "/Users/rougier/Documents/GitHub/nano-emacs")
-(add-to-list 'load-path ".")
-
-;; Window layout (optional)
-(require 'nano-layout)
 
 ;; Theming Command line options (this will cancel warning messages)
 (add-to-list 'command-switch-alist '("-dark"   . (lambda (args))))
@@ -46,34 +38,6 @@
     (setq user-init-file this-file)
     (setq custom-file custom-path)
     (load custom-file)))
-
-;; Theme
-(require 'nano-faces)
-(nano-faces)
-
-(require 'nano-theme)
-(nano-theme)
-
-;; Nano default settings (optional)
-;;(require 'nano-defaults)
-
-;; Nano session saving (optional)
-;;(require 'nano-session)
-
-;; Nano header & mode lines (optional)
-(require 'nano-modeline)
-
-;; Nano key bindings modification (optional)
-;;(require 'nano-bindings)
-
-;; Nano counsel configuration (optional)
-;; Needs "counsel" package to be installed (M-x: package-install)
-;; (require 'nano-counsel)
-
-;; Welcome message (optional)
-(let ((inhibit-message t))
-  (message "Welcome to GNU Emacs / N Λ N O edition")
-  (message (format "Initialization time: %s" (emacs-init-time))))
 
 ;; Splash (optional)
 (add-to-list 'command-switch-alist '("-no-splash" . (lambda (args))))
