@@ -83,6 +83,7 @@
 ;; Help (optional)
 (add-to-list 'command-switch-alist '("-no-help" . (lambda (args))))
 (unless (member "-no-help" command-line-args)
- ;; (require 'nano-help))
+ ;; (require 'nano-help)
+ )
 
 (provide 'nano)
