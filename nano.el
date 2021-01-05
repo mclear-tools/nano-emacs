@@ -21,33 +21,10 @@
 (add-to-list 'command-switch-alist '("-light"  . (lambda (args))))
 (add-to-list 'command-switch-alist '("-default"  . (lambda (args))))
 
-(cond
- ((member "-default" command-line-args) t)
- ((member "-dark" command-line-args) (require 'nano-theme-dark))
- (t (require 'nano-theme-light)))
-
-;; Customize support for 'emacs -q' (Optional)
-;; You can enable customizations by creating the nano-custom.el file
-;; with e.g. `touch nano-custom.el` in the folder containing this file.
-(let* ((this-file  (or load-file-name (buffer-file-name)))
-       (this-dir  (file-name-directory this-file))
-       (custom-path  (concat this-dir "nano-custom.el")))
-  (when (and (eq nil user-init-file)
-             (eq nil custom-file)
-             (file-exists-p custom-path))
-    (setq user-init-file this-file)
-    (setq custom-file custom-path)
-    (load custom-file)))
-
 ;; Splash (optional)
 (add-to-list 'command-switch-alist '("-no-splash" . (lambda (args))))
-(unless (member "-no-splash" command-line-args)
-  (require 'nano-splash))
 
 ;; Help (optional)
 (add-to-list 'command-switch-alist '("-no-help" . (lambda (args))))
-(unless (member "-no-help" command-line-args)
- ;; (require 'nano-help)
- )
 
 (provide 'nano)
