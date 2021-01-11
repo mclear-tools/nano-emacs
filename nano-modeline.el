@@ -302,17 +302,17 @@
   org-mode-line-string)
 
 (defun nano-modeline-org-clock-mode ()
-    (let ((buffer-name (format-mode-line "%b"))
-          (mode-name   (format-mode-line "%m"))
-          (branch      (vc-branch))
-          (position    (format-mode-line "%l:%c")))
-      (nano-modeline-compose (nano-modeline-status)
-                             buffer-name 
-                             (concat "(" mode-name
-                                     (if branch (concat ", "
-                                             (propertize branch 'face 'italic)))
-                                     ")" )
-                             org-mode-line-string)))
+  (let ((buffer-name (format-mode-line "%b"))
+        (mode-name   (format-mode-line 'mode-name))
+        (branch      (vc-branch))
+        (position    (format-mode-line "%l:%c")))
+    (nano-modeline-compose (nano-modeline-status)
+                           buffer-name
+                           (concat "(" mode-name
+                                   (if branch (concat ", "
+                                                      (propertize branch 'face 'italic)))
+                                   ")" )
+                           org-mode-line-string)))
 
 ;; ---------------------------------------------------------------------
 (defun nano-modeline-docview-mode-p ()
@@ -320,20 +320,20 @@
 
 (defun nano-modeline-docview-mode ()
   (let ((buffer-name (format-mode-line "%b"))
-	(mode-name   (format-mode-line "%m"))
-	(branch      (vc-branch))
-	(page-number (concat
-		      (number-to-string (doc-view-current-page)) "/"
-		      (or (ignore-errors
-			    (number-to-string (doc-view-last-page-number)))
-			  "???"))))
+	    (mode-name   (format-mode-line 'mode-name))
+	    (br'mode-name      (vc-branch))
+	    (page-number (concat
+		              (number-to-string (doc-view-current-page)) "/"
+		              (or (ignore-errors
+			                (number-to-string (doc-view-last-page-number)))
+			              "???"))))
     (nano-modeline-compose
      (nano-modeline-status)
      buffer-name
      (concat "(" mode-name
-	     (if branch (concat ", "
-				(propertize branch 'face 'italic)))
-	     ")" )
+	         (if branch (concat ", "
+				                (propertize branch 'face 'italic)))
+	         ")" )
      page-number)))
 
 ;; ---------------------------------------------------------------------
@@ -342,20 +342,20 @@
 
 (defun nano-modeline-pdf-view-mode ()
   (let ((buffer-name (format-mode-line "%b"))
-	(mode-name   (format-mode-line "%m"))
-	(branch      (vc-branch))
-	(page-number (concat
-		      (number-to-string (pdf-view-current-page)) "/"
-		      (or (ignore-errors
-			    (number-to-string (pdf-cache-number-of-pages)))
-			  "???"))))
+	    (mode-name   (format-mode-line 'mode-name))
+	    (branch      (vc-branch))
+	    (page-number (concat
+		              (number-to-string (pdf-view-current-page)) "/"
+		              (or (ignore-errors
+			                (number-to-string (pdf-cache-number-of-pages)))
+			              "???"))))
     (nano-modeline-compose
      "RW"
      buffer-name
      (concat "(" mode-name
-	     (if branch (concat ", "
-				(propertize branch 'face 'italic)))
-	     ")" )
+	         (if branch (concat ", "
+				                (propertize branch 'face 'italic)))
+	         ")" )
      page-number)))
 
 ;; ---------------------------------------------------------------------
@@ -370,12 +370,12 @@
   (derived-mode-p 'completion-list-mode))
 
 (defun nano-modeline-completion-list-mode ()
-    (let ((buffer-name (format-mode-line "%b"))
-          (mode-name   (format-mode-line "%m"))
-          (position    (format-mode-line "%l:%c")))
+  (let ((buffer-name (format-mode-line "%b"))
+        (mode-name   (format-mode-line 'mode-name))
+        (position    (format-mode-line "%l:%c")))
 
-      (nano-modeline-compose (nano-modeline-status)
-                             buffer-name "" position)))
+    (nano-modeline-compose (nano-modeline-status)
+                           buffer-name "" position)))
 ;; ---------------------------------------------------------------------
 (with-eval-after-load 'deft
   (defun deft-print-header ()
@@ -401,21 +401,24 @@
 (defun nano-modeline-prog-mode-p ()
   (derived-mode-p 'prog-mode))
 
+(defun nano-modeline-elisp-mode-p ()
+  (derived-mode-p 'lisp-data-mode))
+
 (defun nano-modeline-text-mode-p ()
   (derived-mode-p 'text-mode))
 
 (defun nano-modeline-default-mode ()
-    (let ((buffer-name (format-mode-line "%b"))
-          (mode-name   (format-mode-line "%m"))
-          (branch      (vc-branch))
-          (position    (format-mode-line "%l:%c")))
-      (nano-modeline-compose (nano-modeline-status)
-                             buffer-name
-                             (concat "(" mode-name
-                                     (if branch (concat ", "
-                                            (propertize branch 'face 'italic)))
-                                     ")" )
-                             position)))
+  (let ((buffer-name (format-mode-line "%b"))
+        (mode-name   (format-mode-line 'mode-name))
+        (branch      (vc-branch))
+        (position    (format-mode-line "%l:%c")))
+    (nano-modeline-compose (nano-modeline-status)
+                           buffer-name
+                           (concat "(" mode-name
+                                   (if branch (concat " "
+                                                      (propertize branch 'face 'italic)))
+                                   ")" )
+                           position)))
 
 ;; ---------------------------------------------------------------------
 (defun nano-modeline-status ()
@@ -439,28 +442,29 @@
   "Install a header line whose content is dependend on the major mode"
   (interactive)
   (setq-default header-line-format
-  '((:eval
-     (cond ((nano-modeline-prog-mode-p)            (nano-modeline-default-mode))
-           ((nano-modeline-message-mode-p)         (nano-modeline-message-mode))
-           ((nano-modeline-elfeed-search-mode-p)   (nano-modeline-elfeed-search-mode))
-           ((nano-modeline-elfeed-show-mode-p)     (nano-modeline-elfeed-show-mode))
-           ((nano-modeline-deft-mode-p)            (nano-modeline-deft-mode))
-           ((nano-modeline-info-mode-p)            (nano-modeline-info-mode))
-           ((nano-modeline-calendar-mode-p)        (nano-modeline-calendar-mode))
-           ((nano-modeline-org-capture-mode-p)     (nano-modeline-org-capture-mode))
-           ((nano-modeline-org-agenda-mode-p)      (nano-modeline-org-agenda-mode))
-           ((nano-modeline-org-clock-mode-p)       (nano-modeline-org-clock-mode))
-           ((nano-modeline-term-mode-p)            (nano-modeline-term-mode))
-           ((nano-modeline-mu4e-dashboard-mode-p)  (nano-modeline-mu4e-dashboard-mode))
-           ((nano-modeline-mu4e-main-mode-p)       (nano-modeline-mu4e-main-mode))
-           ((nano-modeline-mu4e-headers-mode-p)    (nano-modeline-mu4e-headers-mode))
-;;         ((nano-modeline-mu4e-view-mode-p)       (nano-modeline-mu4e-view-mode))
-           ((nano-modeline-text-mode-p)            (nano-modeline-default-mode))
-           ((nano-modeline-pdf-view-mode-p)        (nano-modeline-pdf-view-mode))
-	   ((nano-modeline-docview-mode-p)         (nano-modeline-docview-mode))
-	   ((nano-modeline-completion-list-mode-p) (nano-modeline-completion-list-mode))
-           ((nano-modeline-nano-help-mode-p)       (nano-modeline-nano-help-mode))
-           (t                                      (nano-modeline-default-mode)))))))
+                '((:eval
+                   (cond ((nano-modeline-prog-mode-p)            (nano-modeline-default-mode))
+                         ((nano-modeline-elisp-mode-p)           (nano-modeline-default-mode))
+                         ((nano-modeline-message-mode-p)         (nano-modeline-message-mode))
+                         ((nano-modeline-elfeed-search-mode-p)   (nano-modeline-elfeed-search-mode))
+                         ((nano-modeline-elfeed-show-mode-p)     (nano-modeline-elfeed-show-mode))
+                         ((nano-modeline-deft-mode-p)            (nano-modeline-deft-mode))
+                         ((nano-modeline-info-mode-p)            (nano-modeline-info-mode))
+                         ((nano-modeline-calendar-mode-p)        (nano-modeline-calendar-mode))
+                         ((nano-modeline-org-capture-mode-p)     (nano-modeline-org-capture-mode))
+                         ((nano-modeline-org-agenda-mode-p)      (nano-modeline-org-agenda-mode))
+                         ((nano-modeline-org-clock-mode-p)       (nano-modeline-org-clock-mode))
+                         ((nano-modeline-term-mode-p)            (nano-modeline-term-mode))
+                         ((nano-modeline-mu4e-dashboard-mode-p)  (nano-modeline-mu4e-dashboard-mode))
+                         ((nano-modeline-mu4e-main-mode-p)       (nano-modeline-mu4e-main-mode))
+                         ((nano-modeline-mu4e-headers-mode-p)    (nano-modeline-mu4e-headers-mode))
+                         ;;         ((nano-modeline-mu4e-view-mode-p)       (nano-modeline-mu4e-view-mode))
+                         ((nano-modeline-text-mode-p)            (nano-modeline-default-mode))
+                         ((nano-modeline-pdf-view-mode-p)        (nano-modeline-pdf-view-mode))
+	                     ((nano-modeline-docview-mode-p)         (nano-modeline-docview-mode))
+	                     ((nano-modeline-completion-list-mode-p) (nano-modeline-completion-list-mode))
+                         ((nano-modeline-nano-help-mode-p)       (nano-modeline-nano-help-mode))
+                         (t                                      (nano-modeline-default-mode)))))))
 
 ;; ---------------------------------------------------------------------
 (defun nano-modeline-update-windows ()
@@ -469,17 +473,17 @@
   (dolist (window (window-list))
     (with-selected-window window
       (if (or (one-window-p t)
-	      (eq (window-in-direction 'below) (minibuffer-window))
-	      (not (window-in-direction 'below)))
-	  (with-current-buffer (window-buffer window)
-	    (setq mode-line-format (list "")))
-                ;; (setq mode-line-format (list "")))
-	(with-current-buffer (window-buffer window)
- 	  (setq mode-line-format nil)))
-;;      (if (window-in-direction 'above)
-;;	      (face-remap-add-relative 'header-line '(:overline "#777777"))
-;;	    (face-remap-add-relative 'header-line '(:overline nil)))
-          )))
+	          (eq (window-in-direction 'below) (minibuffer-window))
+	          (not (window-in-direction 'below)))
+	      (with-current-buffer (window-buffer window)
+	        (setq mode-line-format (list "")))
+        ;; (setq mode-line-format (list "")))
+	    (with-current-buffer (window-buffer window)
+ 	      (setq mode-line-format nil)))
+      ;;      (if (window-in-direction 'above)
+      ;;	      (face-remap-add-relative 'header-line '(:overline "#777777"))
+      ;;	    (face-remap-add-relative 'header-line '(:overline nil)))
+      )))
 (add-hook 'window-configuration-change-hook 'nano-modeline-update-windows)
 
 (setq eshell-status-in-modeline nil)
