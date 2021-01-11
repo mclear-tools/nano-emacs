@@ -31,7 +31,7 @@
 (defun vc-branch ()
   (if vc-mode
       (let ((backend (vc-backend buffer-file-name)))
-        (concat "#" (substring-no-properties vc-mode
+        (concat "" (substring-no-properties vc-mode
                                  (+ (if (eq backend 'Hg) 2 3) 2))))  nil))
 
 
