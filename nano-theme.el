@@ -89,7 +89,7 @@
 
   ;; General
   (set-face 'buffer-menu-buffer                       'nano-face-strong)
-  (set-face 'minibuffer-prompt                        'nano-face-strong)
+  (set-face 'minibuffer-prompt                        'nano-face-strong-bold)
   (set-face 'link                                    'nano-face-salient)
   (set-face 'fringe                                    'nano-face-faded)
   (set-face-attribute 'fringe nil
@@ -719,6 +719,15 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face 'company-echo-common                     'nano-face-strong)
     (set-face 'company-tooltip-annotation-selection    'nano-face-popout)))
 
+(defun nano-them--icomplete ()
+  "derive icomplte faces from nano faces"
+  (with-eval-after-load 'icomplete
+    (set-face-attribute 'icomplete-first-match nil
+                        :foreground (face-background 'nano-face-critical)
+                        :background nano-color-highlight
+                        ;; :background (face-background 'default)
+                        :slant 'italic
+                        :weight 'bold)))
 
 (defun nano-theme ()
   "Derive many, many faces from the core nano faces."
@@ -726,6 +735,7 @@ function is a convenience wrapper used by `describe-package-1'."
   (nano-theme--font-lock)
   (nano-theme--mode-line)
   (nano-theme--minibuffer)
+  (nano-them--icomplete)
   (nano-theme--buttons)
   (nano-theme--info)
   (nano-theme--bookmark)
@@ -756,4 +766,4 @@ function is a convenience wrapper used by `describe-package-1'."
   (nano-theme--hl-line)
   (nano-theme--company))
 
-  (provide 'nano-theme)
+(provide 'nano-theme)
