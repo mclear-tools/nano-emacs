@@ -54,17 +54,17 @@
                       :foreground (face-foreground 'default)
                       :background (face-background 'default))
 
-  (if (display-graphic-p)
-      (set-face-attribute 'bold nil :weight 'regular)
-    (set-face-attribute 'bold nil :weight 'bold))
+  ;; (if (display-graphic-p)
+  ;; (set-face-attribute 'bold nil :weight 'regular)
+  ;; (set-face-attribute 'bold nil :weight 'bold))
 
   ;; Structural
-  (set-face 'bold                                     'nano-face-strong)
-  (set-face 'italic                                    'nano-face-faded)
-  (set-face 'bold-italic                              'nano-face-strong)
+  (set-face 'bold                                     'nano-face-strong-bold)
+  (set-face 'italic                                    'nano-face-faded-italic)
+  (set-face 'bold-italic                              'nano-face-strong-bold-italic)
   (set-face 'region                                   'nano-face-subtle)
   (set-face 'highlight                                'nano-face-subtle)
-  ;;(set-face 'fixed-pitch                                     'default)
+  (set-face 'fixed-pitch                                     'default)
   (set-face 'fixed-pitch-serif                       'nano-face-default)
   (set-face 'variable-pitch                          'nano-face-default)
   (set-face 'cursor                                  'nano-face-default)
@@ -593,7 +593,7 @@ function is a convenience wrapper used by `describe-package-1'."
   "Derive markdown faces from nano faces."
   (with-eval-after-load 'markdown-mode
     (set-face 'markdown-blockquote-face              'nano-face-default)
-    (set-face 'markdown-bold-face                     'nano-face-strong)
+    (set-face 'markdown-bold-face                     'nano-face-strong-bold)
     (set-face 'markdown-code-face                    'nano-face-default)
     (set-face 'markdown-comment-face                   'nano-face-faded)
     (set-face 'markdown-footnote-marker-face         'nano-face-default)
@@ -616,7 +616,7 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face 'markdown-html-tag-delimiter-face      'nano-face-default)
     (set-face 'markdown-html-tag-name-face           'nano-face-default)
     (set-face 'markdown-inline-code-face              'nano-face-popout)
-    (set-face 'markdown-italic-face                    'nano-face-faded)
+    (set-face 'markdown-italic-face                    'nano-face-faded-italic)
     (set-face 'markdown-language-info-face           'nano-face-default)
     (set-face 'markdown-language-keyword-face        'nano-face-default)
     (set-face 'markdown-line-break-face              'nano-face-default)

@@ -51,6 +51,22 @@ sufficiently different from other faces such that it attracts
 attention through the popout effect."
   :group 'nano)
 
+(defface nano-face-strong-bold nil
+  "Strong face is used for information of a structural nature.
+It has to be the same color as the default color and only the
+weight differs by one level (e.g., light/regular or
+regular/bold). IT is generally used for titles, keywords,
+directory, etc."
+  :group 'nano)
+
+(defface nano-face-strong-bold-italic nil
+  "Strong face is used for information of a structural nature.
+It has to be the same color as the default color and only the
+weight differs by one level (e.g., light/regular or
+regular/bold). IT is generally used for titles, keywords,
+directory, etc."
+  :group 'nano)
+
 (defface nano-face-strong nil
   "Strong face is used for information of a structural nature.
 It has to be the same color as the default color and only the
@@ -67,6 +83,14 @@ intensity as the default face. This is typically used for links."
   :group 'nano)
 
 (defface nano-face-faded nil
+  "Faded face is for information that are less important.
+It is made by using the same hue as the default but with a lesser
+intensity than the default. It can be used for comments,
+secondary information and also replace italic (which is generally
+abused anyway)."
+  :group 'nano)
+
+(defface nano-face-faded-italic nil
   "Faded face is for information that are less important.
 It is made by using the same hue as the default but with a lesser
 intensity than the default. It can be used for comments,
@@ -190,8 +214,8 @@ background color that is barely perceptible."
                       :foreground nano-color-foreground
                       :background nano-color-subtle
                       :box `(:line-width 1
-                                         :color ,nano-color-background
-                                         :style nil))
+                             :color ,nano-color-background
+                             :style nil))
 
   (set-face-attribute 'nano-face-tag-default nil
                       :foreground nano-color-foreground
@@ -199,16 +223,16 @@ background color that is barely perceptible."
                       :family "Roboto Mono" :weight 'regular
                       :height (if (display-graphic-p) 120 1)
                       :box `(:line-width 1
-                                         :color ,nano-color-foreground
-                                         :style nil))
+                             :color ,nano-color-foreground
+                             :style nil))
 
   (set-face-attribute 'nano-face-header-strong nil
                       :foreground nano-color-strong
                       :background nano-color-subtle
                       :inherit 'nano-face-strong
                       :box `(:line-width 1
-                                         :color ,nano-color-background
-                                         :style nil))
+                             :color ,nano-color-background
+                             :style nil))
 
   (set-face-attribute 'nano-face-tag-strong nil
                       :foreground nano-color-strong
@@ -216,15 +240,15 @@ background color that is barely perceptible."
                       :family "Roboto Mono" :weight 'regular
                       :height (if (display-graphic-p) 120 1)
                       :box `(:line-width 1
-                                         :color ,nano-color-strong
-                                         :style nil))
+                             :color ,nano-color-strong
+                             :style nil))
 
   (set-face-attribute 'nano-face-header-salient nil
                       :foreground nano-color-background
                       :background nano-color-salient
                       :box `(:line-width 1
-                                         :color ,nano-color-background
-                                         :style nil))
+                             :color ,nano-color-background
+                             :style nil))
 
   (set-face-attribute 'nano-face-tag-salient nil
                       :foreground nano-color-background
@@ -232,15 +256,15 @@ background color that is barely perceptible."
                       :family "Roboto Mono" :weight 'regular
                       :height (if (display-graphic-p) 120 1)
                       :box `(:line-width 1
-                                         :color ,nano-color-salient
-                                         :style nil))
+                             :color ,nano-color-salient
+                             :style nil))
 
   (set-face-attribute 'nano-face-header-popout nil
                       :foreground nano-color-background
                       :background nano-color-popout
                       :box `(:line-width 1
-                                         :color ,nano-color-background
-                                         :style nil))
+                             :color ,nano-color-background
+                             :style nil))
 
   (set-face-attribute 'nano-face-tag-popout nil
                       :foreground nano-color-background
@@ -248,15 +272,15 @@ background color that is barely perceptible."
                       :family "Roboto Mono" :weight 'regular
                       :height (if (display-graphic-p) 120 1)
                       :box `(:line-width 1
-                                         :color ,nano-color-popout
-                                         :style nil))
+                             :color ,nano-color-popout
+                             :style nil))
 
   (set-face-attribute 'nano-face-header-faded nil
                       :foreground nano-color-background
                       :background nano-color-faded
                       :box `(:line-width 1
-                                         :color ,nano-color-background
-                                         :style nil))
+                             :color ,nano-color-background
+                             :style nil))
 
   (set-face-attribute 'nano-face-tag-faded nil
                       :foreground nano-color-background
@@ -264,8 +288,8 @@ background color that is barely perceptible."
                       :family "Roboto Mono" :weight 'regular
                       :height (if (display-graphic-p) 120 1)
                       :box `(:line-width 1
-                                         :color ,nano-color-faded
-                                         :style nil))
+                             :color ,nano-color-faded
+                             :style nil))
 
   (set-face-attribute 'nano-face-header-subtle nil)
 
@@ -273,16 +297,16 @@ background color that is barely perceptible."
                       :foreground nano-color-background
                       :background nano-color-critical
                       :box `(:line-width 1
-                                         :color ,nano-color-background
-                                         :style nil))
+                             :color ,nano-color-background
+                             :style nil))
   (set-face-attribute 'nano-face-tag-critical nil
                       :foreground nano-color-background
                       :background nano-color-critical
                       :family "Roboto Mono" :weight 'regular
                       :height (if (display-graphic-p) 120 1)
                       :box `(:line-width 1
-                                         :color ,nano-color-critical
-                                         :style nil))
+                             :color ,nano-color-critical
+                             :style nil))
 
   (set-face-attribute 'nano-face-header-separator nil
                       :inherit 'nano-face-default
@@ -292,7 +316,28 @@ background color that is barely perceptible."
                       :height 0.1)
   (set-face-attribute 'nano-face-header-highlight nil
                       :inherit 'nano-face-header-faded
-                      :box nil))
+                      :box nil)
+
+  (set-face-attribute 'nano-face-strong-bold nil
+                      ;; :foreground (face-foreground 'nano-face-default)
+                      :inherit'nano-face-default
+                      :family "Roboto Mono"
+                      :weight 'bold)
+
+  (set-face-attribute 'nano-face-strong-bold-italic nil
+                      ;; :foreground (face-foreground 'nano-face-default)
+                      :inherit 'nano-face-default
+                      :family "Roboto Mono"
+                      :weight 'bold
+                      :slant 'italic)
+
+  (set-face-attribute 'nano-face-faded-italic nil
+                      ;; :foreground (face-foreground 'nano-face-default)
+                      :inherit'nano-face-default
+                      :family "Roboto Mono"
+                      :weight 'medium
+                      :slant 'italic)
+  )
 
 (provide 'nano-faces)
 ;;; nano-faces.el ends here
