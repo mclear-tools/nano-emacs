@@ -169,6 +169,7 @@ background color that is barely perceptible."
   "Critical face for tags"
   :group 'nano)
 
+
 (defun nano-what-faces (pos)
   "Get the font faces at POS."
   (interactive "d")
@@ -333,10 +334,11 @@ background color that is barely perceptible."
 
   (set-face-attribute 'nano-face-faded-italic nil
                       ;; :foreground (face-foreground 'nano-face-default)
-                      :inherit'nano-face-default
+                      :inherit 'nano-face-default
                       :family "Roboto Mono"
                       :weight 'medium
                       :slant 'italic)
+
   )
 
 (provide 'nano-faces)
