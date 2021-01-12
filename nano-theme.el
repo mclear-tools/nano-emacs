@@ -89,7 +89,7 @@
 
   ;; General
   (set-face 'buffer-menu-buffer                       'nano-face-strong)
-  (set-face 'minibuffer-prompt                        'nano-face-strong-bold)
+  (set-face 'minibuffer-prompt                        'nano-face-strong)
   (set-face 'link                                    'nano-face-salient)
   (set-face 'fringe                                    'nano-face-faded)
   (set-face-attribute 'fringe nil
@@ -453,7 +453,7 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face 'org-document-info                       'nano-face-faded)
     (set-face 'org-document-info-keyword               'nano-face-faded)
     (set-face 'org-document-title                      'nano-face-faded)
-    (set-face 'org-done                              'nano-face-default)
+    (set-face 'org-done                                'nano-face-faded)
     (set-face 'org-drawer                              'nano-face-faded)
     (set-face 'org-ellipsis                            'nano-face-faded)
     (set-face 'org-footnote                            'nano-face-faded)
@@ -462,14 +462,14 @@ function is a convenience wrapper used by `describe-package-1'."
     ;; (set-face 'org-hide                             'nano-face-faded)
     ;; (set-face 'org-indent                           'nano-face-faded)
     (set-face 'org-latex-and-related                   'nano-face-faded)
-    (set-face 'org-level-1                            'nano-face-strong)
-    (set-face 'org-level-2                            'nano-face-strong)
+    (set-face 'org-level-1                            'nano-face-popout)
+    (set-face 'org-level-2                            'nano-face-salient)
     (set-face 'org-level-3                            'nano-face-strong)
-    (set-face 'org-level-4                            'nano-face-strong)
-    (set-face 'org-level-5                            'nano-face-strong)
+    (set-face 'org-level-4                            'nano-face-popout)
+    (set-face 'org-level-5                            'nano-face-salient)
     (set-face 'org-level-6                            'nano-face-strong)
-    (set-face 'org-level-7                            'nano-face-strong)
-    (set-face 'org-level-8                            'nano-face-strong)
+    (set-face 'org-level-7                            'nano-face-popout)
+    (set-face 'org-level-8                            'nano-face-salient)
     (set-face 'org-link                              'nano-face-salient)
     (set-face 'org-list-dt                             'nano-face-faded)
     (set-face 'org-macro                               'nano-face-faded)
@@ -479,9 +479,9 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face 'org-priority                            'nano-face-faded)
     (set-face 'org-property-value                      'nano-face-faded)
     (set-face 'org-quote                               'nano-face-salient)
-    (set-face 'org-scheduled                           'nano-face-faded)
-    (set-face 'org-scheduled-previously                'nano-face-faded)
-    (set-face 'org-scheduled-today                     'nano-face-faded)
+    (set-face 'org-scheduled                           'nano-face-salient)
+    (set-face 'org-scheduled-previously                'nano-face-salient)
+    (set-face 'org-scheduled-today                     'nano-face-popout)
     (set-face 'org-sexp-date                           'nano-face-faded)
     (set-face 'org-special-keyword                     'nano-face-faded)
     (set-face 'org-table                               'nano-face-faded)
@@ -489,8 +489,9 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face 'org-tag-group                           'nano-face-faded)
     (set-face 'org-target                              'nano-face-faded)
     (set-face 'org-time-grid                           'nano-face-faded)
-    (set-face 'org-todo                              'nano-face-salient)
-    (set-face 'org-upcoming-deadline                   'nano-face-faded)
+    (set-face 'org-todo                                'nano-face-strong-bold)
+    (set-face 'org-upcoming-deadline                   '(nano-face-popout
+                                                         nano-face-strong))
     (set-face 'org-verbatim                           'nano-face-popout)
     (set-face 'org-verse                               'nano-face-faded)
     (set-face 'org-warning                            'nano-face-popout)))
@@ -719,8 +720,8 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face 'company-echo-common                     'nano-face-strong)
     (set-face 'company-tooltip-annotation-selection    'nano-face-popout)))
 
-(defun nano-them--icomplete ()
-  "derive icomplte faces from nano faces"
+(defun nano-theme--icomplete ()
+  "derive icomplete faces from nano faces"
   (with-eval-after-load 'icomplete
     (set-face-attribute 'icomplete-first-match nil
                         :foreground (face-background 'nano-face-critical)
@@ -735,7 +736,7 @@ function is a convenience wrapper used by `describe-package-1'."
   (nano-theme--font-lock)
   (nano-theme--mode-line)
   (nano-theme--minibuffer)
-  (nano-them--icomplete)
+  (nano-theme--icomplete)
   (nano-theme--buttons)
   (nano-theme--info)
   (nano-theme--bookmark)
