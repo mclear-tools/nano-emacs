@@ -66,7 +66,7 @@
   (set-face 'highlight                                'nano-face-subtle)
   (set-face 'fixed-pitch                                     'default)
   (set-face 'fixed-pitch-serif                       'nano-face-default)
-  (set-face 'variable-pitch                          'nano-face-default)
+  (set-face 'variable-pitch                          'default)
   (set-face 'cursor                                  'nano-face-default)
 
   (set-face-attribute 'cursor nil
@@ -452,7 +452,10 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face 'org-default                             'nano-face-faded)
     (set-face 'org-document-info                       'nano-face-faded)
     (set-face 'org-document-info-keyword               'nano-face-faded)
-    (set-face 'org-document-title                      'nano-face-faded)
+    (set-face-attribute 'org-document-title nil
+                        :height 1.25
+                        :foreground (face-foreground 'nano-face-salient)
+                        :background (face-background 'nano-face-default))
     (set-face 'org-done                                'nano-face-faded)
     (set-face 'org-drawer                              'nano-face-faded)
     (set-face 'org-ellipsis                            'nano-face-faded)
@@ -462,15 +465,23 @@ function is a convenience wrapper used by `describe-package-1'."
     ;; (set-face 'org-hide                             'nano-face-faded)
     ;; (set-face 'org-indent                           'nano-face-faded)
     (set-face 'org-latex-and-related                   'nano-face-faded)
-    (set-face 'org-level-1                            'nano-face-popout)
+    ;; (set-face 'org-level-1                            'nano-face-popout)
+    (set-face-attribute 'org-level-1 nil
+                        :height 1.15
+                        :inherit 'variable-pitch
+                        :foreground (face-foreground 'nano-face-popout)
+                        :background (face-background 'nano-face-default))
+
     (set-face 'org-level-2                            'nano-face-salient)
-    (set-face 'org-level-3                            'nano-face-strong)
-    (set-face 'org-level-4                            'nano-face-popout)
-    (set-face 'org-level-5                            'nano-face-salient)
-    (set-face 'org-level-6                            'nano-face-strong)
-    (set-face 'org-level-7                            'nano-face-popout)
+    (set-face 'org-level-3                            'nano-face-faded)
+    (set-face 'org-level-4                            'nano-face-salient)
+    (set-face 'org-level-5                            'nano-face-faded)
+    (set-face 'org-level-6                            'nano-face-salient)
+    (set-face 'org-level-7                            'nano-face-faded)
     (set-face 'org-level-8                            'nano-face-salient)
-    (set-face 'org-link                              'nano-face-salient)
+    (set-face-attribute 'org-link nil
+                        :foreground (face-foreground 'nano-face-salient)
+                        :underline t)
     (set-face 'org-list-dt                             'nano-face-faded)
     (set-face 'org-macro                               'nano-face-faded)
     (set-face 'org-meta-line                           'nano-face-faded)
