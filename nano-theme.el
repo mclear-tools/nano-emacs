@@ -746,25 +746,39 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face 'helm-grep-finish                                'nano-face-default)))
 
 
+;; (defun nano-theme--company ()
+;;   "Derive company faces from nano faces"
+;;   (with-eval-after-load 'company
+;;     (set-face 'company-tooltip                         'nano-face-strong)
+;;     (set-face 'company-tooltip-selection               'nano-face-salient)
+;;     (set-face 'company-tooltip-mouse                   'nano-face-strong)
+;;     (set-face 'company-tooltip-common                  'nano-face-strong)
+;;     (set-face 'company-tooltip-common-selection        'nano-face-salient)
+;;     (set-face 'company-preview                         'nano-face-faded)
+;;     (set-face 'company-preview-common                  'nano-face-faded)
+;;     (set-face 'company-preview-search                  'nano-face-strong)
+;;     (set-face 'company-tooltip-search                  'nano-face-faded)
+;;     (set-face 'company-tooltip-search-selection        'nano-face-strong)
+;;     (set-face 'company-scrollbar-bg                    'nano-face-default)
+;;     (set-face 'company-scrollbar-fg                    'nano-face-subtle)
+;;     ;; (set-face 'company-template-field                  'nano-face-subtle)
+;;     (set-face 'company-tooltip-annotation              'nano-face-strong)
+;;     (set-face 'company-echo-common                     'nano-face-strong)
+;;     (set-face 'company-tooltip-annotation-selection    'nano-face-popout)))
+
 (defun nano-theme--company ()
-  "Derive company faces from nano faces"
+  "Derive company tooltip window from nano faces."
   (with-eval-after-load 'company
-    (set-face 'company-tooltip                         'nano-face-strong)
-    (set-face 'company-tooltip-selection               'nano-face-salient)
-    (set-face 'company-tooltip-mouse                   'nano-face-strong)
-    (set-face 'company-tooltip-common                  'nano-face-strong)
-    (set-face 'company-tooltip-common-selection        'nano-face-salient)
-    (set-face 'company-preview                         'nano-face-faded)
-    (set-face 'company-preview-common                  'nano-face-faded)
-    (set-face 'company-preview-search                  'nano-face-strong)
-    (set-face 'company-tooltip-search                  'nano-face-faded)
-    (set-face 'company-tooltip-search-selection        'nano-face-strong)
-    (set-face 'company-scrollbar-bg                    'nano-face-default)
-    (set-face 'company-scrollbar-fg                    'nano-face-subtle)
-    ;; (set-face 'company-template-field                  'nano-face-subtle)
-    (set-face 'company-tooltip-annotation              'nano-face-strong)
-    (set-face 'company-echo-common                     'nano-face-strong)
-    (set-face 'company-tooltip-annotation-selection    'nano-face-popout)))
+    (set-face 'company-tooltip-selection                   '(nano-face-strong nano-face-subtle))
+    (set-face 'company-tooltip                                               'nano-face-default)
+    (set-face 'company-scrollbar-fg                                            'nano-face-faded)
+    (set-face 'company-scrollbar-bg                                          'nano-face-default)
+    (set-face 'company-tooltip-common                                        'nano-face-default)
+    (set-face 'company-tooltip-common-selection            '(nano-face-strong nano-face-subtle))
+    (set-face 'company-tooltip-annotation                                    'nano-face-default)
+    (set-face 'company-tooltip-annotation-selection        '(nano-face-strong nano-face-subtle))))
+
+
 
 (defun nano-theme--icomplete ()
   "derive icomplete faces from nano faces"
