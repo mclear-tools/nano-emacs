@@ -678,13 +678,38 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face 'markdown-footnote-text-face           'nano-face-default)
     (set-face 'markdown-gfm-checkbox-face            'nano-face-default)
     (set-face 'markdown-header-delimiter-face          'nano-face-faded)
-    (set-face 'markdown-header-face                   'nano-face-strong)
-    (set-face 'markdown-header-face-1                 'nano-face-strong)
-    (set-face 'markdown-header-face-2                 'nano-face-strong)
-    (set-face 'markdown-header-face-3                 'nano-face-strong)
-    (set-face 'markdown-header-face-4                 'nano-face-strong)
-    (set-face 'markdown-header-face-5                 'nano-face-strong)
-    (set-face 'markdown-header-face-6                'nano-face-strong)
+    (set-face-attribute 'markdown-header-face nil
+                        :inherit 'variable-pitch)
+    (set-face-attribute 'markdown-header-face-1 nil
+                        ;; :height 1.75
+                        :inherit 'variable-pitch
+                        :foreground (face-foreground 'nano-face-popout)
+                        :background (face-background 'nano-face-default))
+    (set-face-attribute 'markdown-header-face-2 nil
+                        ;; :height 1.6
+                        :inherit 'variable-pitch
+                        :foreground (face-foreground 'nano-face-salient)
+                        :background (face-background 'nano-face-default))
+    (set-face-attribute 'markdown-header-face-3 nil
+                        ;; :height 1.45
+                        :inherit 'variable-pitch
+                        :foreground (face-foreground 'nano-face-faded)
+                        :background (face-background 'nano-face-default))
+    (set-face-attribute 'markdown-header-face-4 nil
+                        ;; :height 1.35
+                        :inherit 'variable-pitch
+                        :foreground (face-foreground 'nano-face-salient)
+                        :background (face-background 'nano-face-default))
+    (set-face-attribute 'markdown-header-face-5 nil
+                        ;; :height 1.25
+                        :inherit 'variable-pitch
+                        :foreground (face-foreground 'nano-face-faded)
+                        :background (face-background 'nano-face-default))
+    (set-face-attribute 'markdown-header-face-6 nil
+                        ;; :height 1.25
+                        :inherit 'variable-pitch
+                        :foreground (face-foreground 'nano-face-salient)
+                        :background (face-background 'nano-face-default))
     (set-face 'markdown-header-rule-face             'nano-face-default)
     (set-face 'markdown-highlight-face               'nano-face-default)
     (set-face 'markdown-hr-face                      'nano-face-default)
