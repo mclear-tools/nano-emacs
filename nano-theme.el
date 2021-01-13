@@ -268,15 +268,46 @@
 (defun nano-theme--outline ()
   "Derive outline faces from nano faces."
   (with-eval-after-load 'outline
-    (set-face 'outline-1                              'nano-face-strong)
-    (set-face 'outline-2                              'nano-face-strong)
-    (set-face 'outline-3                              'nano-face-strong)
-    (set-face 'outline-4                              'nano-face-strong)
-    (set-face 'outline-5                              'nano-face-strong)
-    (set-face 'outline-6                              'nano-face-strong)
-    (set-face 'outline-7                              'nano-face-strong)
-    (set-face 'outline-8                              'nano-face-strong)))
-
+    (set-face-attribute 'outline-1 nil
+                        ;; :height 1.75
+                        :inherit 'variable-pitch
+                        :foreground (face-foreground 'nano-face-popout)
+                        :background (face-background 'nano-face-default))
+    (set-face-attribute 'outline-2 nil
+                        ;; :height 1.6
+                        :inherit 'variable-pitch
+                        :foreground (face-foreground 'nano-face-salient)
+                        :background (face-background 'nano-face-default))
+    (set-face-attribute 'outline-3 nil
+                        ;; :height 1.45
+                        :inherit 'variable-pitch
+                        :foreground (face-foreground 'nano-face-faded)
+                        :background (face-background 'nano-face-default))
+    (set-face-attribute 'outline-4 nil
+                        ;; :height 1.35
+                        :inherit 'variable-pitch
+                        :foreground (face-foreground 'nano-face-salient)
+                        :background (face-background 'nano-face-default))
+    (set-face-attribute 'outline-5 nil
+                        ;; :height 1.25
+                        :inherit 'variable-pitch
+                        :foreground (face-foreground 'nano-face-faded)
+                        :background (face-background 'nano-face-default))
+    (set-face-attribute 'outline-6 nil
+                        ;; :height 1.25
+                        :inherit 'variable-pitch
+                        :foreground (face-foreground 'nano-face-salient)
+                        :background (face-background 'nano-face-default))
+    (set-face-attribute 'outline-7 nil
+                        ;; :height 1.25
+                        :inherit 'variable-pitch
+                        :foreground (face-foreground 'nano-face-faded)
+                        :background (face-background 'nano-face-default))
+    (set-face-attribute 'outline-8 nil
+                        ;; :height 1.25
+                        :inherit 'variable-pitch
+                        :foreground (face-foreground 'nano-face-salient)
+                        :background (face-background 'nano-face-default))))
 
 (defun nano-theme--customize ()
   "Derive customize faces from nano faces."
@@ -326,13 +357,13 @@ function is a convenience wrapper used by `describe-package-1'."
                            text (concat "[" text "]")))
           (button-face (if (display-graphic-p)
                            '(:box `(:line-width 1
-                                                :color ,nano-color-subtle
-                                                :style nil)
-                                  :foreground nano-color-faded
-                                  :background nano-color-subtle)
+                                    :color ,nano-color-subtle
+                                    :style nil)
+                             :foreground nano-color-faded
+                             :background nano-color-subtle)
                          'link)))
       (apply #'insert-text-button button-text
-               'face button-face 'follow-link t properties))))
+             'face button-face 'follow-link t properties))))
 
 
 (defun nano-theme--flyspell ()
