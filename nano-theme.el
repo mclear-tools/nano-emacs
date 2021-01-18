@@ -501,42 +501,49 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face-attribute 'org-level-1 nil
                         ;; :height 1.75
                         :inherit 'variable-pitch
-                        :foreground (face-foreground 'nano-face-popout)
+                        :foreground "#BF616A"
                         :background (face-background 'nano-face-default))
     (set-face-attribute 'org-level-2 nil
                         ;; :height 1.6
                         :inherit 'variable-pitch
-                        :foreground (face-foreground 'nano-face-salient)
+                        :foreground "#5E81AC"
+                        ;; :foreground "#EBCB8B"
                         :background (face-background 'nano-face-default))
     (set-face-attribute 'org-level-3 nil
                         ;; :height 1.45
                         :inherit 'variable-pitch
-                        :foreground (face-foreground 'nano-face-faded)
+                        :foreground "#BF616A"
+                        ;; :foreground "#88C0D0"
                         :background (face-background 'nano-face-default))
     (set-face-attribute 'org-level-4 nil
                         ;; :height 1.35
                         :inherit 'variable-pitch
-                        :foreground (face-foreground 'nano-face-salient)
+                        :foreground "#5E81AC"
+                        ;; :foreground "#B48EAD"
                         :background (face-background 'nano-face-default))
     (set-face-attribute 'org-level-5 nil
                         ;; :height 1.25
                         :inherit 'variable-pitch
-                        :foreground (face-foreground 'nano-face-faded)
+                        :foreground "#BF616A"
+                        ;; :foreground "#81A1C1"
                         :background (face-background 'nano-face-default))
     (set-face-attribute 'org-level-6 nil
                         ;; :height 1.25
                         :inherit 'variable-pitch
-                        :foreground (face-foreground 'nano-face-salient)
+                        :foreground "#5E81AC"
+                        ;; :foreground "#8FBCBB"
                         :background (face-background 'nano-face-default))
     (set-face-attribute 'org-level-7 nil
                         ;; :height 1.25
                         :inherit 'variable-pitch
-                        :foreground (face-foreground 'nano-face-faded)
+                        :foreground "#BF616A"
+                        ;; :foreground "#5E81AC"
                         :background (face-background 'nano-face-default))
     (set-face-attribute 'org-level-8 nil
                         ;; :height 1.25
                         :inherit 'variable-pitch
-                        :foreground (face-foreground 'nano-face-salient)
+                        :foreground "#5E81AC"
+                        ;; :foreground "#A3BE8C"
                         :background (face-background 'nano-face-default))
     ;; (set-face 'org-level-2                            'nano-face-salient)
     ;; (set-face 'org-level-3                            'nano-face-faded)
@@ -825,10 +832,12 @@ function is a convenience wrapper used by `describe-package-1'."
 (defun nano-theme--company ()
   "Derive company tooltip window from nano faces."
   (with-eval-after-load 'company
+    (set-face 'company-scrollbar-fg                                          'nano-face-faded)
+    (set-face 'company-scrollbar-bg                                          'nano-face-default)
+    (set-face 'company-preview                             '(nano-face-strong nano-face-subtle))
+    (set-face 'company-preview-common                                        'nano-face-default)
     (set-face 'company-tooltip-selection                   '(nano-face-strong nano-face-subtle))
     (set-face 'company-tooltip                                               'nano-face-default)
-    (set-face 'company-scrollbar-fg                                            'nano-face-faded)
-    (set-face 'company-scrollbar-bg                                          'nano-face-default)
     (set-face 'company-tooltip-common                                        'nano-face-default)
     (set-face 'company-tooltip-common-selection            '(nano-face-strong nano-face-subtle))
     (set-face 'company-tooltip-annotation                                    'nano-face-default)
