@@ -875,7 +875,7 @@ function is a convenience wrapper used by `describe-package-1'."
   (nano-theme--diff)
   (nano-theme--term)
   (nano-theme--calendar)
-  (nano-theme--agenda)
+  ;; (nano-theme--agenda)
   (nano-theme--org)
   (nano-theme--mu4e)
   (nano-theme--elfeed)
