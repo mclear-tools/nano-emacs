@@ -104,6 +104,7 @@
   (set-face-attribute 'tooltip nil                         :height 0.85)
   (set-face 'secondary-selection                      'nano-face-subtle)
   (set-face 'completions-common-part                   'nano-face-faded)
+  (set-face 'completions-annotations                 'nano-face-normal)
   (set-face 'completions-first-difference            'nano-face-default))
 (defun nano-theme--font-lock ()
   "Derive font-lock faces from nano-faces."
@@ -808,7 +809,6 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face 'helm-grep-lineno                                  'nano-face-faded)
     (set-face 'helm-grep-finish                                'nano-face-default)))
 
-
 ;; (defun nano-theme--company ()
 ;;   "Derive company faces from nano faces"
 ;;   (with-eval-after-load 'company
@@ -843,7 +843,18 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face 'company-tooltip-annotation                                    'nano-face-default)
     (set-face 'company-tooltip-annotation-selection        '(nano-face-strong nano-face-subtle))))
 
-
+(defun nano-theme--selectrum ()
+  "Derive selectrum faces from nano faces"
+  (with-eval-after-load 'selectrum
+    (set-face-attribute 'selectrum-current-candidate nil
+                        :background nano-color-highlight
+                        :slant 'italic
+                        :weight 'bold)
+    ;; (set-face-attribute 'selectrum-completion-docsig nil
+    ;;                     :background nano-color-background
+    ;;                     :slant 'italic
+    ;;                     :weight 'bold)
+    ))
 
 (defun nano-theme--icomplete ()
   "derive icomplete faces from nano faces"
@@ -861,7 +872,6 @@ function is a convenience wrapper used by `describe-package-1'."
   (nano-theme--font-lock)
   (nano-theme--mode-line)
   (nano-theme--minibuffer)
-  (nano-theme--icomplete)
   (nano-theme--buttons)
   (nano-theme--info)
   (nano-theme--bookmark)
@@ -889,7 +899,10 @@ function is a convenience wrapper used by `describe-package-1'."
   (nano-theme--helm-occur)
   (nano-theme--helm-ff)
   (nano-theme--helm-grep)
+  (nano-theme--selectrum)
+  (nano-theme--icomplete)
   (nano-theme--hl-line)
-  (nano-theme--company))
+  (nano-theme--company)
+  )
 
 (provide 'nano-theme)
