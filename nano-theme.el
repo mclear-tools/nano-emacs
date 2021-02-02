@@ -454,7 +454,7 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face 'org-agenda-filter-effort                'nano-face-faded)
     (set-face 'org-agenda-filter-regexp                'nano-face-faded)
     (set-face 'org-agenda-filter-tags                  'nano-face-faded)
-    ;;  (set-face 'org-agenda-property-face                'nano-face-faded)
+    ;; (set-face 'org-agenda-property-face                'nano-face-faded)
     (set-face 'org-agenda-restriction-lock             'nano-face-faded)
     (set-face 'org-agenda-structure                   'nano-face-strong)))
 
@@ -885,7 +885,7 @@ function is a convenience wrapper used by `describe-package-1'."
   (nano-theme--diff)
   (nano-theme--term)
   (nano-theme--calendar)
-  ;; (nano-theme--agenda)
+  (nano-theme--agenda)
   (nano-theme--org)
   (nano-theme--mu4e)
   (nano-theme--elfeed)
