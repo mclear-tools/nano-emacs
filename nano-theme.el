@@ -678,7 +678,7 @@ function is a convenience wrapper used by `describe-package-1'."
 (defun nano-theme--markdown ()
   "Derive markdown faces from nano faces."
   (with-eval-after-load 'markdown-mode
-    (set-face 'markdown-blockquote-face              'nano-face-default)
+    (set-face 'markdown-blockquote-face              'nano-face-salient)
     (set-face 'markdown-bold-face                     'nano-face-strong-bold)
     (set-face 'markdown-code-face                    'nano-face-default)
     (set-face 'markdown-comment-face                   'nano-face-faded)
