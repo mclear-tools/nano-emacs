@@ -603,7 +603,7 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face 'mu4e-forwarded-face                     'nano-face-faded)
     (set-face 'mu4e-header-face                      'nano-face-default)
     (set-face 'mu4e-header-highlight-face                      'hl-line)
-    (set-face 'mu4e-header-key-face                   'nano-face-strong)
+    (set-face 'mu4e-header-key-face                   'nano-face-strong-bold)
     (set-face 'mu4e-header-marks-face                  'nano-face-faded)
     (set-face 'mu4e-header-title-face                 'nano-face-strong)
     (set-face 'mu4e-header-value-face                'nano-face-default)
